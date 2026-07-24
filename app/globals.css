@@ -1,26 +1,308 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  /* TOKENS */
+  --primary: #D4A017;
+  --primary-hover: #F0B90B;
+  --primary-foreground: #FFFFFF;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --background: #FFFFFF;
+  --surface: #F7F7F7;
+  --surface-secondary: #FAFAFA;
+
+  --card: #FFFFFF;
+  --card-foreground: #1B1B1B;
+
+  --popover: #FFFFFF;
+  --popover-foreground: #1B1B1B;
+
+  /* TEXT */
+  --foreground: #1B1B1B;
+  --foreground-secondary: #6B7280;
+  --foreground-muted: #9CA3AF;
+  --foreground-inverse: #FFFFFF;
+
+  /* NEUTRA */
+  --black: #0E0E0E;
+  --gray-dark: #2A2A2A;
+  --gray-light: #F7F7F7;
+
+  /* BORDER */
+  --border: #EAEAEA;
+  --input: #E5E7EB;
+  --ring: #D4A017;
+
+  /* STATUS */
+  --success: #16A34A;
+  --success-foreground: #FFFFFF;
+  --danger: #DC2626;
+  --danger-foreground: #FFFFFF;
+  --warning: #F59E0B;
+  --warning-foreground: #FFFFFF;
+  --info: #2563EB;
+  --info-foreground: #FFFFFF;
+
+  /* RADIUS */
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 18px;
+  --radius-full: 999px;
+
+  /* SHADOW */
+  --shadow-xs: 0 1px 2px rgb(0 0 0 / .04);
+  --shadow-sm: 0 4px 12px rgb(0 0 0 / .05);
+  --shadow-md: 0 10px 40px rgb(0 0 0 / .08);
+  --shadow-lg: 0 18px 50px rgb(0 0 0 / .12);
+  --shadow-xl: 0 24px 60px rgb(0 0 0 / .16);
+
+  /* CONSTAINER */
+  --container-width: 1320px;
+
+  /* 8pt GRID */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  /* TYPOGRAPHY */
+  --font-body: var(--font-inter);
+  --font-heading: var(--font-manrope);
   --font-mono: var(--font-geist-mono);
+
+  /* ANIMATIONS */
+  --duration-fast: 150ms;
+  --duration-normal: 200ms;
+  --duration-slow: 600ms;
+  --ease-default: cubic-bezier(.4,0,.2,1);
+  --ease-out: cubic-bezier(.16,1,.3,1);
+
+}
+/* TAILWIND THEME */
+@theme inline {
+
+  /* Brand */
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+
+  /* Backgrounds */
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-secondary: var(--surface-secondary);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  /* Text */
+  --color-foreground: var(--foreground);
+  --color-foreground-secondary: var(--foreground-secondary);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-foreground-inverse: var(--foreground-inverse);
+
+  /* Neutral */
+  --color-black: var(--black);
+  --color-gray-dark: var(--gray-dark);
+  --color-gray-light: var(--gray-light);
+
+  /* UI */
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Status */
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-danger: var(--danger);
+  --color-danger-foreground: var(--danger-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+
+  /* Fonts */
+  --font-sans: var(--font-body);
+  --font-heading: var(--font-heading);
+  --font-mono: var(--font-mono);
+
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+
+/* RESET */
+*, *::before, *::after{
+  box-sizing:border-box;
+  border-color:var(--border);
+}
+
+html{
+  scroll-behavior:smooth;
+  text-size-adjust:100%;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:var(--background);
+  color:var(--foreground);
+  font-family:var(--font-body),sans-serif;
+  text-rendering:optimizeLegibility;
+}
+
+/* TYPOGRAPHY */
+h1, h2, h3, h4, h5, h6{
+  margin:0;
+  font-family:var(--font-heading),sans-serif;
+  color:var(--foreground);
+  line-height:1.15;
+}
+
+h1{
+  font-size:clamp(3rem,5vw,5rem);
+  font-weight:800;
+}
+
+h2{
+  font-size:clamp(2.5rem,4vw,4rem);
+  font-weight:800;
+}
+
+h3{
+  font-size:2rem;
+  font-weight:700;
+}
+
+h4{
+  font-size:1.5rem;
+  font-weight:700;
+}
+
+h5{
+  font-size:1.25rem;
+  font-weight:700;
+}
+
+h6{
+  font-size:1rem;
+  font-weight:700;
+}
+
+p{
+  margin:0;
+  color:var(--foreground-secondary);
+  line-height:1.8;
+  font-size:16px;
+}
+
+small{
+  color:var(--foreground-muted);
+}
+
+strong{
+  color:var(--foreground);
+}
+
+code, pre{
+  font-family:var(--font-mono);
+}
+
+/* ELEMENTS */
+a{
+  color:inherit;
+  text-decoration:none;
+  transition:200ms ease;
+}
+
+a:hover{
+  color:var(--primary);
+}
+
+img{
+  display:block;
+  max-width:100%;
+}
+
+button{
+  font:inherit;
+  cursor:pointer;
+}
+
+input, textarea, select{
+  font:inherit;
+}
+
+/* SELECTION */
+::selection{
+  background:var(--primary);
+  color:#fff;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{
+  width:10px;
+}
+
+::-webkit-scrollbar-thumb{
+  background:var(--primary);
+  border-radius:999px;
+}
+
+::-webkit-scrollbar-track{
+  background:transparent;
+}
+
+/* UTILITIES */
+.container{
+  width:min(
+    calc(100% - 48px),
+    var(--container-width)
+  );
+  margin-inline:auto;
+}
+
+.section{
+  padding-block:96px;
+}
+
+.section-sm{
+  padding-block:64px;
+}
+
+.section-lg{
+  padding-block:128px;
+}
+
+.text-balance{
+  text-wrap:balance;
+}
+
+.text-pretty{
+  text-wrap:pretty;
+}
+
+/* ACCESSIBILITY */
+:focus-visible{
+  outline:3px solid var(--ring);
+  outline-offset:3px;
+}
+
+@media (prefers-reduced-motion:reduce){
+  *, *::before, *::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+    scroll-behavior:auto !important;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
