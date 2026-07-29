@@ -263,12 +263,21 @@ input, textarea, select{
 }
 
 /* UTILITIES */
-.container{
-  width:min(
+.container {
+  width: min(
     calc(100% - 48px),
     var(--container-width)
   );
-  margin-inline:auto;
+  margin-inline: auto;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: min(
+      calc(100% - 24px),
+      var(--container-width)
+    );
+  }
 }
 
 .section{

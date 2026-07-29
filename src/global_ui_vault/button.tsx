@@ -110,7 +110,7 @@ export default function Button({
       className={cn(
         "inline-flex items-center justify-center gap-2",
 
-        "rounded-lg",
+        "rounded-sm",
 
         "font-medium",
 
