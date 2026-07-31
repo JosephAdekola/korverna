@@ -11,7 +11,7 @@ export default function MainNavBar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     return (
-        <nav className="relative">
+        <nav className="relative container">
             <div className="flex items-center justify-between gap-(--space-5)">
                 <Link
                     href="/"

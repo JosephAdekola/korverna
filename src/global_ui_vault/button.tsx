@@ -76,7 +76,6 @@ export default function Button({
     ghost: `
       bg-transparent
       text-foreground
-      hover:bg-surface
     `,
 
     success: `
