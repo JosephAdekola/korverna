@@ -42,7 +42,7 @@ export default function page() {
           </Button>
           <ShortText
               placeholder='Enter your email'
-              containerClassName='w-full md:w-fit'
+              containerClassName='w-full lg:w-fit'
               rightIcon={
                 <Button
                   className='text-background bg-foreground capitalize
@@ -58,7 +58,7 @@ export default function page() {
               <div className='flex flex-col lg:flex-row gap-5'>
                 <Button
                   variant="outline"
-                  className='border-foreground-muted! py-7!'
+                  className='border-foreground-muted! py-7! justify-start'
                   leftIcon={<Forklift size={30} className='bg-primary/20 p-1 rounded' />}
                   rightIcon={<ArrowRight className='text-primary' />}>
                   <h6 className='text-start'>

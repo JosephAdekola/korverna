@@ -23,7 +23,7 @@ export default function ComingSoonLayout({
             </div>
 
             {/* Navbar */}
-            <nav className="relative z-20 flex h-[10vh] items-center justify-center bg-background/90">
+            <nav className="relative z-30 flex h-[10vh] items-center justify-center bg-background/90">
                 <MainNavBar />
             </nav>
 
@@ -42,7 +42,7 @@ export default function ComingSoonLayout({
                     {children}
                 </div>
                 <div className="absolute bottom-0 right-0 left-0 h-fit bg-foreground
-                        flex flex-col lg:flex-row gap-5 justify-between p-3 ">
+                        flex flex-col lg:flex-row gap-5 justify-between p-3 z-30 ">
                     <div className="flex items-center gap-5">
                         {
                             contactInfo.map((info, idx) => (
@@ -63,7 +63,7 @@ export default function ComingSoonLayout({
                             ))
                         }
                     </div>
-                    <div className="flex items-center gap-3 ">
+                    <div className="flex items-center justify-end gap-3">
                         <p className="text-xs! text-background!">
                             2026 Korverna Limited. All rights reserved
                         </p>
