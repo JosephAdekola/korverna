@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import { Inter, Manrope, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Providers } from "./provider";
 
 const inter = Inter({
-  subsets:["latin"],
-  variable:"--font-body"
+  subsets: ["latin"],
+  variable: "--font-body"
 })
 
 const manrope = Manrope({
-  subsets:["latin"],
-  variable:"--font-heading"
+  subsets: ["latin"],
+  variable: "--font-heading"
 })
 
 const geistMono = Geist_Mono({
@@ -33,7 +34,13 @@ export default function RootLayout({
       className={`${inter.variable} ${manrope.variable} ${geistMono.variable} 
       h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <Providers>
+
+          {children}
+          
+        </Providers>
+      </body>
     </html>
   );
 }

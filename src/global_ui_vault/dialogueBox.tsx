@@ -39,7 +39,7 @@ export default function DialogueBox({
     }, [setDialogueBoxState])
 
     return (
-        <div className='fixed inset-0 bg-[#0000006d] flex justify-center z-20'>
+        <div className='fixed inset-0 bg-[#0000006d] flex justify-center z-40'>
             <Card
                 ref={cardRef}
                 variant="outline"

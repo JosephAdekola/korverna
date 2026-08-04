@@ -1,14 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import Link from "@/src/global_ui_vault/link";
 import Button from "@/src/global_ui_vault/button";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import { mainNavMenu } from "./data/nav_menu";
+import { useRootContext } from "@/src/contexts/rootContext";
 
-export default function MainNavBar() {
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+export default function MainNavBar({
+    setShowDialogue
+}: {
+    setShowDialogue: Dispatch<SetStateAction<boolean>>
+}) {
+
+    const { dispatch } = useRootContext()
+
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);   
+    
 
     return (
         <nav className="relative container">
@@ -32,6 +41,18 @@ export default function MainNavBar() {
                         <Button
                             key={idx}
                             variant={menu.special ? "primary" : "ghost"}
+                            onClick={() => {
+                                if (menu.label == "Contact") {
+                                    setShowDialogue(true)
+                                }
+
+                                if (menu.label == "Our Companies") {
+                                    dispatch("FOCUS_COMPANIES")
+                                    setTimeout(()=>{
+                                        dispatch("UNFOCUS_COMPANIES")
+                                    }, 5000)
+                                }
+                            }}
                         >
                             <span className={menu.special ? "font-bold text-white" : "font-bold"}>
                                 {menu.label.charAt(0).toUpperCase() + menu.label.slice(1)}
@@ -52,11 +73,10 @@ export default function MainNavBar() {
 
             {/* Mobile Menu */}
             <div
-                className={`absolute left-0 top-full mt-4 w-full rounded-xl bg-white shadow-lg border transition-all duration-300 md:hidden ${
-                    mobileMenuOpen
+                className={`absolute left-0 top-full mt-4 w-full rounded-xl bg-white shadow-lg border transition-all duration-300 md:hidden ${mobileMenuOpen
                         ? "opacity-100 visible translate-y-0"
                         : "opacity-0 invisible -translate-y-4"
-                }`}
+                    }`}
             >
                 <div className="flex flex-col p-(--space-3) gap-(--space-2)">
                     {mainNavMenu.map((menu, idx) => (
@@ -64,7 +84,19 @@ export default function MainNavBar() {
                             key={idx}
                             variant={menu.special ? "primary" : "ghost"}
                             className="w-full justify-start"
-                            onClick={() => setMobileMenuOpen(false)}
+                            onClick={() => {
+                                setMobileMenuOpen(false)
+                                if (menu.label == "Contact") {
+                                    setShowDialogue(true)
+                                }
+
+                                if (menu.label == "Our Companies") {
+                                    dispatch("FOCUS_COMPANIES")
+                                    setTimeout(()=>{
+                                        dispatch("UNFOCUS_COMPANIES")
+                                    }, 2000)
+                                }
+                            }}
                         >
                             <span className={menu.special ? "font-bold text-white" : "font-bold"}>
                                 {menu.label.charAt(0).toUpperCase() + menu.label.slice(1)}

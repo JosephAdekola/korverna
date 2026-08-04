@@ -1,14 +1,19 @@
-import { ReactNode } from "react";
+"use client"
+import { ReactNode, useState } from "react";
 import Image from "next/image";
 import MainNavBar from "./root_components/main_nav/main_nav_bar";
 import { contactInfo } from "./root_components/main_nav/data/contact_info";
 import { Mail, MapPin, Phone } from "lucide-react";
+import DialogueBox from "@/src/global_ui_vault/dialogueBox";
 
 export default function ComingSoonLayout({
     children,
 }: {
     children: ReactNode;
 }) {
+
+    const [showDialogue, setShowDialogue] = useState<boolean>(false)
+
     return (
         <main className="relative min-h-screen overflow-hidden">
             {/* Background Image */}
@@ -24,8 +29,39 @@ export default function ComingSoonLayout({
 
             {/* Navbar */}
             <nav className="relative z-30 flex h-[10vh] items-center justify-center bg-background/90">
-                <MainNavBar />
+                <MainNavBar
+                    setShowDialogue={setShowDialogue} />
             </nav>
+
+            {
+                showDialogue && (
+                    <DialogueBox
+                        setDialogueBoxState={setShowDialogue}
+                        classname='bg-background'
+                        body={
+                            <div className='flex flex-col gap-5'>
+                                {
+                                    contactInfo.map((info, idx) => (
+                                        <div
+                                            key={idx}
+                                            className="flex items-center gap-2">
+                                            {
+                                                info.type === "email" ?
+                                                    <Mail size={25} className="text-primary" /> :
+                                                    info.type == "phone" ?
+                                                        <Phone size={25} className="text-primary" /> :
+                                                        <MapPin size={25} className="text-primary" />
+                                            }
+                                            <p className="">
+                                                {info.value}
+                                            </p>
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                        } />
+                )
+            }
 
             {/* Hero */}
             <div className="relative z-20 h-[90vh] pb-15">
@@ -39,7 +75,8 @@ export default function ComingSoonLayout({
                 </div>
 
                 <div className="relative z-20 overflow-y-scroll h-full py-(--space-5)">
-                    {children}
+
+                        {children}
                 </div>
                 <div className="absolute bottom-0 right-0 left-0 h-fit bg-foreground
                         flex flex-col lg:flex-row gap-5 justify-between p-3 z-30 ">
