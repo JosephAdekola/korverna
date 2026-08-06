@@ -1,45 +1,44 @@
 "use client"
-import React, { RefObject, useEffect, useRef } from 'react'
+import React, { RefAttributes, RefObject, useEffect, useRef, useState } from 'react'
 import Button from '@/src/global_ui_vault/button'
 import { ArrowRight, CircleSmall, Forklift, LayoutDashboard } from 'lucide-react'
 import ShortText from '@/src/global_ui_vault/text_inputs/shortTexts'
 import { useRootContext } from '@/src/contexts/rootContext'
+import { submitNewsletter } from './root_functions/submitNewsletter'
 
 export default function page() {
 
   const companiesRef: RefObject<HTMLDivElement | null> = useRef(null)
+  const notifyRef: RefObject<HTMLInputElement | null> = useRef(null)
  
-  const { state } = useRootContext()
+  const { state, dispatch } = useRootContext()
+
+  const [email, setEmail] = useState<string>("") 
+  const [errorMessage, setErrorMessage] = useState<string>("") 
+  const [successMessage, setSuccessMessage] = useState<string>("")
+  const [isSubmittingNewsLetter, setIsSubmittingNewsLetter] = useState<boolean>(false)
   
   useEffect(() => {
     if (state.focus_companies) {
       companiesRef.current?.focus();
     }
-  }, [state.focus_companies]);
+
+    if (state.focus_notify_me) {
+      notifyRef.current?.focus()
+    }
+  }, [state.focus_companies, state.focus_notify_me]);
 
   return (
     <div className='container grid grid-cols-1 lg:grid-cols-[7fr_3fr]'>
       <div className='flex flex-col gap-10 '>
         <div>
-          <Button
-            variant="ghost"
-            className='cursor-auto! p-0'
-            leftIcon={
-              <CircleSmall
-                size={15}
-                className='text-primary bg-primary rounded-full' />
-            }>
-            <h6 className='uppercase text-primary! font-bold tracking-widest'>
-              lunching soon
-            </h6>
-          </Button>
-          <h1 className='capitalize'>
+          <h1 className='capitalize text-center md:text-start'>
             building businesses that build <i></i>
             <span className='text-primary'>
               Tomorrow
             </span>
           </h1>
-          <p>
+          <p className='text-center md:text-start'>
             A diversified company creating sustainable businesses across
             infrastructure and strategic industries
           </p>
@@ -49,19 +48,45 @@ export default function page() {
             className='text-foreground capitalize w-full lg:w-fit whitespace-nowrap'
             rightIcon={
               <ArrowRight />
-            }>
-            explore infrastructure
+            }
+            onClick={()=>{
+              dispatch("FOCUS_NOTIFY_ME")
+              setTimeout(() => {
+                dispatch("UNFOCUS_NOTIFY_ME")
+              }, 10);
+            }}>
+            Subscribe to our newsletter
           </Button>
           <ShortText
+            ref={notifyRef}
+            type="email"
             placeholder='Enter your email'
+            error={errorMessage}
+            success={successMessage}
+            loading={isSubmittingNewsLetter}
+            inputClassName='pr-30 md:pr-24'
             containerClassName='w-full lg:w-fit'
             rightIcon={
               <Button
+                loading={isSubmittingNewsLetter}
+                onClick={()=>submitNewsletter(
+                  {email},
+                  "LIMITED",
+                  setErrorMessage,
+                  setSuccessMessage,
+                  setIsSubmittingNewsLetter
+                )}
                 className='text-background bg-foreground capitalize
-                     translate-x-4 lg:translate-x-10'>
-                notify me
+                     translate-x-4 lg:translate-x-10 '>
+                subscribe
               </Button>
-            } />
+            }
+            value={email}
+            onChange={e=>{
+              setErrorMessage("");
+              setSuccessMessage("")
+              setEmail(e.target.value)
+            }} />
         </div>
         <div
           ref={companiesRef}

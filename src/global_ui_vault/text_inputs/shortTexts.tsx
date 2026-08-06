@@ -53,15 +53,15 @@ const ShortText = forwardRef<HTMLInputElement, ShortTextProps>(
     const message = error || success || helperText;
 
     const messageClass = error
-      ? "text-danger"
+      ? "text-danger!"
       : success
-        ? "text-success"
-        : "text-foreground-secondary";
+        ? "text-success!"
+        : "text-foreground-secondary!";
 
     return (
       <div
         className={cn(
-          "flex flex-col gap-2",
+          "flex flex-col gap-2 relative",
           containerClassName
         )}
       >
@@ -133,11 +133,7 @@ const ShortText = forwardRef<HTMLInputElement, ShortTextProps>(
             {...props}
           />
 
-          {loading ? (
-            <div className="absolute right-4 top-1/2 -translate-y-1/2 text-primary">
-              <i className="pi pi-spin pi-spinner" />
-            </div>
-          ) : isPassword ? (
+          {isPassword ? (
             <button
               type="button"
               tabIndex={-1}
@@ -164,7 +160,7 @@ const ShortText = forwardRef<HTMLInputElement, ShortTextProps>(
         {message && (
           <p
             className={cn(
-              "text-sm",
+              "text-xs! absolute top-full w-full pl-5!",
               messageClass
             )}
           >

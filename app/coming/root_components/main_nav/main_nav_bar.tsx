@@ -16,8 +16,8 @@ export default function MainNavBar({
 
     const { dispatch } = useRootContext()
 
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);   
-    
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
 
     return (
         <nav className="relative container">
@@ -42,18 +42,29 @@ export default function MainNavBar({
                             key={idx}
                             variant={menu.special ? "primary" : "ghost"}
                             onClick={() => {
-                                if (menu.label == "Contact") {
-                                    setShowDialogue(true)
-                                }
 
-                                if (menu.label == "Our Companies") {
-                                    dispatch("FOCUS_COMPANIES")
-                                    setTimeout(()=>{
-                                        dispatch("UNFOCUS_COMPANIES")
-                                    }, 5000)
+                                switch (menu.label) {
+                                    case "Contact":
+                                        setShowDialogue(true)
+                                        break;
+                                    case "Our Companies":
+                                        dispatch("FOCUS_COMPANIES")
+                                        setTimeout(() => {
+                                            dispatch("UNFOCUS_COMPANIES")
+                                        }, 1000)
+                                        break;
+                                    case "Notify Me":
+                                        dispatch("FOCUS_NOTIFY_ME");
+                                        setTimeout(()=>{
+                                            dispatch("UNFOCUS_NOTIFY_ME")
+                                        },10)
+                                        break;
+
+                                    default:
+                                        break;
                                 }
-                            }}
-                        >
+                            }} >
+
                             <span className={menu.special ? "font-bold text-white" : "font-bold"}>
                                 {menu.label.charAt(0).toUpperCase() + menu.label.slice(1)}
                             </span>
@@ -74,8 +85,8 @@ export default function MainNavBar({
             {/* Mobile Menu */}
             <div
                 className={`absolute left-0 top-full mt-4 w-full rounded-xl bg-white shadow-lg border transition-all duration-300 md:hidden ${mobileMenuOpen
-                        ? "opacity-100 visible translate-y-0"
-                        : "opacity-0 invisible -translate-y-4"
+                    ? "opacity-100 visible translate-y-0"
+                    : "opacity-0 invisible -translate-y-4"
                     }`}
             >
                 <div className="flex flex-col p-(--space-3) gap-(--space-2)">
@@ -92,7 +103,7 @@ export default function MainNavBar({
 
                                 if (menu.label == "Our Companies") {
                                     dispatch("FOCUS_COMPANIES")
-                                    setTimeout(()=>{
+                                    setTimeout(() => {
                                         dispatch("UNFOCUS_COMPANIES")
                                     }, 2000)
                                 }
