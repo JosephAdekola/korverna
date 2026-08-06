@@ -55,9 +55,9 @@ export default function MainNavBar({
                                         break;
                                     case "Newsletter":
                                         dispatch("FOCUS_NOTIFY_ME");
-                                        setTimeout(()=>{
+                                        setTimeout(() => {
                                             dispatch("UNFOCUS_NOTIFY_ME")
-                                        },10)
+                                        }, 10)
                                         break;
 
                                     default:
@@ -97,15 +97,25 @@ export default function MainNavBar({
                             className="w-full justify-start"
                             onClick={() => {
                                 setMobileMenuOpen(false)
-                                if (menu.label == "Contact") {
-                                    setShowDialogue(true)
-                                }
+                                switch (menu.label) {
+                                    case "Contact":
+                                        setShowDialogue(true)
+                                        break;
+                                    case "Our Companies":
+                                        dispatch("FOCUS_COMPANIES")
+                                        setTimeout(() => {
+                                            dispatch("UNFOCUS_COMPANIES")
+                                        }, 1000)
+                                        break;
+                                    case "Newsletter":
+                                        dispatch("FOCUS_NOTIFY_ME");
+                                        setTimeout(() => {
+                                            dispatch("UNFOCUS_NOTIFY_ME")
+                                        }, 10)
+                                        break;
 
-                                if (menu.label == "Our Companies") {
-                                    dispatch("FOCUS_COMPANIES")
-                                    setTimeout(() => {
-                                        dispatch("UNFOCUS_COMPANIES")
-                                    }, 2000)
+                                    default:
+                                        break;
                                 }
                             }}
                         >
