@@ -15,7 +15,7 @@ export const mainNavMenu = [
     },
     {
         id: 3,
-        label: "Notify Me",
+        label: "Newsletter",
         action: ()=>{},
         special: true,
         has_children: false

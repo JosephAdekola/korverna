@@ -53,7 +53,7 @@ export default function MainNavBar({
                                             dispatch("UNFOCUS_COMPANIES")
                                         }, 1000)
                                         break;
-                                    case "Notify Me":
+                                    case "Newsletter":
                                         dispatch("FOCUS_NOTIFY_ME");
                                         setTimeout(()=>{
                                             dispatch("UNFOCUS_NOTIFY_ME")
