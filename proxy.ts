@@ -10,11 +10,15 @@ export function proxy(request: NextRequest) {
     return NextResponse.rewrite(
       new URL("/infrastructure", request.url)
     );
+  } else if(hostname?.startsWith("korverna")) {
+    return NextResponse.rewrite(
+        new URL("/welcome", request.url)
+    )
   }
 
-  return NextResponse.rewrite(
-    new URL("/welcome", request.url)
-  );
+//   return NextResponse.rewrite(
+//     new URL("/welcome", request.url)
+//   );
 }
 
 export const config = {
