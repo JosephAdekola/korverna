@@ -1,15 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export function proxy(request: NextRequest) {
-  const hostname = request.headers
-    .get("host")
-    ?.split(":")[0]
-    .toLowerCase();
+  const hostname = request.headers.get("host")?.toLocaleLowerCase()
 
-  if (
-    hostname === "infrastructure.korverna.com" ||
-    hostname === "infrastructure.localhost"
-  ) {
+  console.log({hostname});
+  
+
+  if (hostname?.startsWith("infrastructure")) {
     return NextResponse.rewrite(
       new URL("/infrastructure", request.url)
     );
