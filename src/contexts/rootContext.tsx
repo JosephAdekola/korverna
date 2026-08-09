@@ -1,4 +1,4 @@
-import { Dispatch, ReactNode, SetStateAction, createContext, useContext, useReducer } from "react"
+import { Dispatch, ReactNode, SetStateAction, createContext, useContext, useReducer, useState } from "react"
 
 
 interface RootContextProviderProps {
@@ -19,6 +19,8 @@ type SignalsProps =
 interface RootContextProps {
     state: StateProps;
     dispatch: Dispatch<SignalsProps>;
+    showContact: boolean;
+    setShowContact: Dispatch<SetStateAction<boolean>>
 }
 
 const reducer = (
@@ -62,12 +64,15 @@ export const RootContextProvider = ({
 }: RootContextProviderProps) => {
 
     const [state, dispatch] = useReducer(reducer, initialState)
+    const [showContact, setShowContact] = useState<boolean>(false)
 
     return (
         <RootContext.Provider
             value={{
                 state,
-                dispatch
+                dispatch,
+                showContact,
+                setShowContact
             }}>
             {children}
         </RootContext.Provider>

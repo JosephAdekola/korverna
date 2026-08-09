@@ -3,6 +3,7 @@
 
 import { ReactNode } from "react";
 import { RootContextProvider } from "@/src/contexts/rootContext";
+import { InfrastructuresContextProvider } from "@/src/contexts/infrastructureContext";
 
 interface ProvidersProps {
   children: ReactNode;
@@ -11,7 +12,9 @@ interface ProvidersProps {
 export function Providers({ children }: ProvidersProps) {
   return (
     <RootContextProvider>
-      {children}
+      <InfrastructuresContextProvider>
+        {children}
+      </InfrastructuresContextProvider>
     </RootContextProvider>
   );
 }

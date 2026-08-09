@@ -104,7 +104,10 @@ export default function page() {
               variant="outline"
               className='border-foreground-muted! py-7! justify-start'
               leftIcon={<Forklift size={30} className='bg-primary/20 p-1 rounded' />}
-              rightIcon={<ArrowRight className='text-primary' />}>
+              rightIcon={<ArrowRight className='text-primary' />}
+              onClick={()=>{
+                window.open("https://www.infrastructure.korverna.com")
+              }}>
               <h6 className='text-start'>
                 Korverna Infrastructure
               </h6>
