@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   description: "Building businesses that build tomorrow",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

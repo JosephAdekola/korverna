@@ -37,16 +37,49 @@
 // }
 
 
-import { headers } from "next/headers";
-import { redirect } from "next/navigation";
 
-export default async function Page() {
-  const headersList = await headers();
-  const host = headersList.get("host")?.split(":")[0];
+// import { headers } from "next/headers";
+// import { redirect } from "next/navigation";
 
-  if (host === "infrastructure.korverna.com") {
-    redirect("/infrastructure");
-  }
+// export default async function Page() {
+//   const headersList = await headers();
+//   const host = headersList.get("host");
 
-  redirect("/welcome");
+//   console.log({host});  
+
+//   if (host?.startsWith("infrastructure")) {
+//     redirect("/infrastructure")
+//   } else {
+//     redirect("/welcome")
+//   }
+// }
+
+// import { headers } from "next/headers";
+// import { redirect } from "next/navigation";
+
+// export default async function Page() {
+//   const headersList = await headers();
+//   const host = headersList.get("host") ?? "";
+//   const hostname = host.split(":")[0];
+
+//   console.log(hostname);
+  
+
+//   console.log("HOST:", host);
+//   console.log("HOSTNAME:", hostname);
+
+//   if (hostname === "infrastructure.korverna.com" || hostname === "infrastructure.localhost") {
+//     redirect("/infrastructure");
+//   }
+
+//   redirect("/welcome");
+// }
+
+
+import React from 'react'
+
+export default function page() {
+  return (
+    <div>Home</div>
+  )
 }
