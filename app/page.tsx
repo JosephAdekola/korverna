@@ -37,17 +37,16 @@
 // }
 
 
-
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 export default async function Page() {
   const headersList = await headers();
-  const host = headersList.get("host");
+  const host = headersList.get("host")?.split(":")[0];
 
-  if (host?.startsWith("infrastructure")) {
-    redirect("/infrastructure")
-  } else {
-    redirect("/welcome")
+  if (host === "infrastructure.korverna.com") {
+    redirect("/infrastructure");
   }
+
+  redirect("/welcome");
 }
