@@ -1,11 +1,13 @@
 "use client"
 import { ReactNode, useState } from "react";
 import Image from "next/image";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import DialogueBox from "@/src/global_ui_vault/dialogueBox";
 import InfraNavBar from "./components/infra_main_nav/infra_nav_bar";
 import { contactInfo } from "./components/infra_main_nav/data/contact_info";
 import { useRootContext } from "@/src/contexts/rootContext";
+import { useInfrastructureContext } from "@/src/contexts/infrastructureContext";
+import Button from "@/src/global_ui_vault/button";
 
 export default function ComingSoonLayout({
     children,
@@ -18,13 +20,23 @@ export default function ComingSoonLayout({
         setShowContact
     } = useRootContext()
 
+    const {
+        infraState,
+        infraDispatch
+    } = useInfrastructureContext()
+
     return (
         <main className="relative min-h-screen overflow-hidden ">
+            <Button
+                className="fixed right-4 top-1/2 -translate-y-1/2 z-99"
+                onClick={()=>infraDispatch("NEXT")}>
+                <ArrowRight />
+            </Button>
             {/* Background Image */}
 
             <div className="absolute w-full h-[70vh] lg:!fixed lg:h-screen lg:inset-0 -z-10">
                 <Image
-                    src="https://ik.imagekit.io/pleddsolca/korverna%20infrastructure/machines/payloader1.png"
+                    src={infraState.current_machine.image_url}
                     alt="hero_banner"
                     fill
                     priority
@@ -32,7 +44,7 @@ export default function ComingSoonLayout({
                 />
 
                 <Image
-                    src="https://ik.imagekit.io/pleddsolca/korverna%20infrastructure/machines/payloader1.png"
+                    src={infraState.current_machine.image_url}
                     alt="hero_banner"
                     fill
                     priority

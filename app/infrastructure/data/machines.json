@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "name": "Payloader",
+    "slug": "payloader",
+    "description": "We have payloaders readily available for hire, with a wide range of additional heavy machinery available to meet your project needs. Get in touch today and request a quote.",
+    "image_url": "https://ik.imagekit.io/pleddsolca/korverna%20infrastructure/machines/payloader1.png?updatedAt=1786259706358",
+    "category": "Earthmoving Equipment",
+    "status": "available",
+    "available_for_hire": true
+  },
+  {
+    "id": 2,
+    "name": "Excavator",
+    "slug": "excavator",
+    "description": "Our excavators are available for hire for excavation, trenching, earthmoving, site preparation, demolition, and other heavy-duty construction projects.",
+    "image_url": "https://ik.imagekit.io/pleddsolca/korverna%20infrastructure/machines/excavator.jpeg",
+    "category": "Earthmoving Equipment",
+    "status": "available",
+    "available_for_hire": true
+  },
+  {
+    "id": 3,
+    "name": "Grader",
+    "slug": "grader",
+    "description": "Our motor graders are available for hire for road construction, grading, leveling, surface preparation, drainage works, and general site development.",
+    "image_url": "https://ik.imagekit.io/pleddsolca/korverna%20infrastructure/machines/grader.jpeg",
+    "category": "Road Construction Equipment",
+    "status": "available",
+    "available_for_hire": true
+  },
+  {
+    "id": 4,
+    "name": "Backhoe Loader",
+    "slug": "backhoe-loader",
+    "description": "Our backhoe loaders are available for hire for excavation, trenching, loading, material handling, site preparation, and general construction work.",
+    "image_url": "https://ik.imagekit.io/pleddsolca/korverna%20infrastructure/machines/Backhoe.jpg?updatedAt=1786318558806",
+    "category": "Earthmoving Equipment",
+    "status": "available",
+    "available_for_hire": true
+  },
+  {
+    "id": 5,
+    "name": "Bulldozer",
+    "slug": "bulldozer",
+    "description": "Our bulldozers are available for hire for land clearing, earthmoving, site preparation, road construction, grading, pushing, and heavy-duty ground works.",
+    "image_url": "https://ik.imagekit.io/pleddsolca/korverna%20infrastructure/machines/buldozer.jpeg",
+    "category": "Earthmoving Equipment",
+    "status": "available",
+    "available_for_hire": true
+  }
+]

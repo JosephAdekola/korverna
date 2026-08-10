@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export function proxy(request: NextRequest) {
-//   const hostname = request.headers.get("host")?.toLocaleLowerCase()
 
 const reqUrl = request.url
 

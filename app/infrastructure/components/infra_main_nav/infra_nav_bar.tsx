@@ -52,7 +52,6 @@ export default function InfraNavBar({
                             key={idx}
                             variant={menu.special ? "primary" : "ghost"}
                             onClick={() => {
-
                                 switch (menu.label) {
                                     case "About us" :
                                         // setShowContact(false)
@@ -92,7 +91,7 @@ export default function InfraNavBar({
 
             {/* Mobile Menu */}
             <div
-                className={`absolute left-0 top-full mt-4 w-full rounded-xl bg-white shadow-lg border transition-all duration-300 md:hidden ${mobileMenuOpen
+                className={`absolute left-0 top-full mt-4 w-full rounded-xl bg-foreground/90 shadow-lg transition-all duration-300 md:hidden ${mobileMenuOpen
                     ? "opacity-100 visible translate-y-0"
                     : "opacity-0 invisible -translate-y-4"
                     }`}
@@ -102,31 +101,28 @@ export default function InfraNavBar({
                         <Button
                             key={idx}
                             variant={menu.special ? "primary" : "ghost"}
-                            className="w-full justify-start"
+                            className="w-full justify-start text-background"
                             onClick={() => {
                                 setMobileMenuOpen(false)
                                 switch (menu.label) {
+                                    case "About us" :
+                                        // setShowContact(false)
+                                        setShowAboutUs(true)
+                                        break;
+                                    case "Services":
+                                        setShowServices(true)
+                                        break;
                                     case "Contact":
                                         setShowDialogue(true)
                                         break;
-                                    case "Our Companies":
-                                        dispatch("FOCUS_COMPANIES")
-                                        setTimeout(() => {
-                                            dispatch("UNFOCUS_COMPANIES")
-                                        }, 1000)
-                                        break;
-                                    case "Newsletter":
-                                        dispatch("FOCUS_NOTIFY_ME");
-                                        setTimeout(() => {
-                                            dispatch("UNFOCUS_NOTIFY_ME")
-                                        }, 10)
+                                    case "Get A Quote":
+                                        setShowQuoteForm(true)
                                         break;
 
                                     default:
                                         break;
                                 }
-                            }}
-                        >
+                            }} >
                             <span className={menu.special ? "font-bold text-white" : "font-bold"}>
                                 {menu.label.charAt(0).toUpperCase() + menu.label.slice(1)}
                             </span>

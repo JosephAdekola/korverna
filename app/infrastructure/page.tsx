@@ -5,13 +5,18 @@ import Button from '@/src/global_ui_vault/button'
 import DialogueBox from '@/src/global_ui_vault/dialogueBox'
 import QuoteForm from './components/quoteForm'
 import { X } from 'lucide-react'
-import { useInfrastructureContext } from '@/src/contexts/infrastructureContext'
+import { InfraActionProps, useInfrastructureContext } from '@/src/contexts/infrastructureContext'
 import AboutUsCard from './components/aboutUsCard'
+import { useSearchParams } from 'next/navigation'
 
 export default function page() {
 
   const companiesRef: RefObject<HTMLDivElement | null> = useRef(null)
   const notifyRef: RefObject<HTMLInputElement | null> = useRef(null)
+
+  const params = useSearchParams()
+
+  const currentMachine = params.get("machine")
 
   const {
     state,
@@ -23,7 +28,9 @@ export default function page() {
     showAboutUs,
     setShowAboutUs,
     showServices,
-    setShowServices
+    setShowServices,
+    infraState,
+    infraDispatch
   } = useInfrastructureContext()
 
   useEffect(() => {
@@ -35,6 +42,14 @@ export default function page() {
       notifyRef.current?.focus()
     }
   }, [state.focus_companies, state.focus_notify_me]);
+
+  useEffect(()=>{
+
+    if (!currentMachine) return
+
+    infraDispatch(currentMachine as InfraActionProps)
+
+  }, [])
 
   return (
     <div className='container grid grid-cols-1 lg:grid-cols-2 h-full'>
@@ -119,13 +134,13 @@ export default function page() {
         <div className='overflow-hidden'>
           <h2 className='capitalize text-center md:text-start text-background! '>
             <span className='text-primary'>
-              Payloader
+              {infraState.current_machine.name}
             </span> <br />
             available for hire
           </h2>
           <p className='text-center md:text-start text-background!'>
-            We have payloaders readily available for hire, with a wide range of additional heavy machinery available to meet your project needs. Get in touch today and request a quote.
-          </p>
+            {infraState.current_machine.description}
+              </p>
         </div>
         <Button
           className='text-foreground'
