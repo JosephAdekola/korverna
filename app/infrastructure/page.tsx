@@ -1,22 +1,19 @@
 "use client"
-import React, { RefObject, useEffect, useRef, useState } from 'react'
+import React, { RefObject, Suspense, useEffect, useRef, useState } from 'react'
 import { useRootContext } from '@/src/contexts/rootContext'
 import Button from '@/src/global_ui_vault/button'
 import DialogueBox from '@/src/global_ui_vault/dialogueBox'
 import QuoteForm from './components/quoteForm'
 import { X } from 'lucide-react'
-import { InfraActionProps, useInfrastructureContext } from '@/src/contexts/infrastructureContext'
+import { useInfrastructureContext } from '@/src/contexts/infrastructureContext'
 import AboutUsCard from './components/aboutUsCard'
-import { useSearchParams } from 'next/navigation'
+import InfrastructureMachineSearchParam from './components/InfrastructureMachineSearchParam'
+
 
 export default function page() {
 
   const companiesRef: RefObject<HTMLDivElement | null> = useRef(null)
   const notifyRef: RefObject<HTMLInputElement | null> = useRef(null)
-
-  const params = useSearchParams()
-
-  const currentMachine = params.get("machine")
 
   const {
     state,
@@ -30,7 +27,6 @@ export default function page() {
     showServices,
     setShowServices,
     infraState,
-    infraDispatch
   } = useInfrastructureContext()
 
   useEffect(() => {
@@ -43,16 +39,11 @@ export default function page() {
     }
   }, [state.focus_companies, state.focus_notify_me]);
 
-  useEffect(()=>{
-
-    if (!currentMachine) return
-
-    infraDispatch(currentMachine as InfraActionProps)
-
-  }, [])
-
   return (
     <div className='container grid grid-cols-1 lg:grid-cols-2 h-full'>
+      <Suspense fallback={null}>
+        <InfrastructureMachineSearchParam />
+      </Suspense>
 
       {
         showQuoteForm && (
@@ -119,7 +110,7 @@ export default function page() {
               <div className='flex justify-end'>
                 <Button
                   className='text-foreground'
-                  onClick={()=> {
+                  onClick={() => {
                     setShowAboutUs(false);
                     setShowContact(true)
                   }}>
@@ -140,7 +131,7 @@ export default function page() {
           </h2>
           <p className='text-center md:text-start text-background!'>
             {infraState.current_machine.description}
-              </p>
+          </p>
         </div>
         <Button
           className='text-foreground'
