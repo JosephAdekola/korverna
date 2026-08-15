@@ -112,7 +112,7 @@ const PhoneInput = ({
                     countryCallingCodeEditable={false}
                     defaultCountry={defaultCountry}
                     value={value}
-                    onChange={e=>onChange}
+                    onChange={val=>onChange && onChange(val ?? "")}
                     disabled={disabled || loading}
                     aria-invalid={
                         !!error || (!!value && !isValid)

@@ -26,3 +26,29 @@ model Newsletter {
 
   @@unique([email, landingPage])
 }
+
+enum QuoteStatus {
+  pending
+  contacted
+  quoted
+  accepted
+  rejected
+  completed
+}
+
+model Quote {
+  id          String      @id @default(cuid())
+  name        String
+  company     String?
+  phone       String
+  email       String?
+  location    String?
+  start       DateTime?
+  end         DateTime?
+  description String
+
+  status      QuoteStatus @default(pending)
+
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
