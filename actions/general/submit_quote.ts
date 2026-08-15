@@ -9,7 +9,7 @@ import { ApiResponse } from "@/utils/api/api-fetch";
 
 export const handleSubmitQuote = async (
     payload: QuoteProps
-): Promise<ApiResponse<unknown> & {status: number}> => {
+): Promise<ApiResponse<unknown> & { status: number }> => {
 
     const validate = quoteSchema.safeParse(payload);
 
@@ -49,7 +49,11 @@ export const handleSubmitQuote = async (
         }
 
         const quote = await prisma.quote.create({
-            data,
+            data: {
+                ...data,
+                start: data.start ? new Date(data.start) : null,
+                end: data.end ? new Date(data.end) : null,
+            },
         });
 
         return {

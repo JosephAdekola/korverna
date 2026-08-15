@@ -3,11 +3,9 @@ import { quoteSchema } from "@/lib/zod/schemas/quote";
 
 export const POST = async (req: Request) => {
     try {
-        const {
-            body: { quote }
-        } = await req.json();
+        const body = await req.json();        
 
-        const validate = quoteSchema.safeParse(quote)
+        const validate = quoteSchema.safeParse(body)
 
         if (!validate.success) {
             return Response.json(
@@ -23,7 +21,9 @@ export const POST = async (req: Request) => {
             )
         }
 
-        const response = await handleSubmitQuote(quote);
+        const data = validate.data
+
+        const response = await handleSubmitQuote(data);
 
         return Response.json(response, {
             status: response.status,
