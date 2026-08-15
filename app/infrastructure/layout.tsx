@@ -1,5 +1,5 @@
 "use client"
-import { ReactNode, useState } from "react";
+import { ReactNode, Suspense } from "react";
 import Image from "next/image";
 import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import DialogueBox from "@/src/global_ui_vault/dialogueBox";
@@ -8,6 +8,7 @@ import { contactInfo } from "./components/infra_main_nav/data/contact_info";
 import { useRootContext } from "@/src/contexts/rootContext";
 import { useInfrastructureContext } from "@/src/contexts/infrastructureContext";
 import Button from "@/src/global_ui_vault/button";
+import SearchParamsForLayout from "./functions/searchParamsForLayout";
 
 export default function ComingSoonLayout({
     children,
@@ -27,9 +28,12 @@ export default function ComingSoonLayout({
 
     return (
         <main className="relative min-h-screen overflow-hidden ">
+            <Suspense>
+                <SearchParamsForLayout></SearchParamsForLayout>
+            </Suspense>
             <Button
                 className="fixed right-4 top-1/2 -translate-y-1/2 z-99"
-                onClick={()=>infraDispatch("NEXT")}>
+                onClick={() => infraDispatch("NEXT")}>
                 <ArrowRight />
             </Button>
             {/* Background Image */}

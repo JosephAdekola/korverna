@@ -61,7 +61,7 @@ export const handleSubmitQuote = async ({
     try {
 
         const response = await api.post(
-            "/api/v1/get-quote", data
+            "/api/v1/infrastructure/get-quote", data
         );
         
         setSuccessMessage([response?.message])
