@@ -1,8 +1,9 @@
 import { Resend } from "resend";
 import { NewSubscriberAdminNotification } from "../templates/new_newsletter_sub";
 import { Newsletter } from "@/generated/prisma/client";
+import { resend } from "../instance";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+
 
 type SendNewsletterNotificationParams = {
     email: string;

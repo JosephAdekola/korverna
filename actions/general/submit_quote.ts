@@ -1,6 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma/prisma";
+import { sendQuoteAdminNotification } from "@/lib/resend/senders/quot_notification";
 import {
     QuoteProps,
     quoteSchema,
@@ -55,6 +56,8 @@ export const handleSubmitQuote = async (
                 end: data.end ? new Date(data.end) : null,
             },
         });
+
+        await sendQuoteAdminNotification({quote})
 
         return {
             success: true,
