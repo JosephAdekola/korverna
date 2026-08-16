@@ -27,11 +27,11 @@ type InfraStateProps = {
 export type InfraActionProps =
     | "NEXT"
     | "PREVIOUS"
-    | "Payloader"
-    | "Excavator"
-    | "Grader"
-    | "Backhoe Loader"
-    | "Bulldozer";
+    | "payloader"
+    | "excavator"
+    | "grader"
+    | "backhoe_loader"
+    | "bulldozer";
 
 type InfrastructureContextProps = {
     showQuoteForm: boolean;
@@ -130,13 +130,13 @@ const reducer = (
             };
         }
 
-        case "Payloader":
-        case "Backhoe Loader":
-        case "Bulldozer":
-        case "Excavator":
-        case "Grader": {
+        case "payloader":
+        case "backhoe_loader":
+        case "bulldozer":
+        case "excavator":
+        case "grader": {
             const targetMachine = machines.find(
-                (machine) => machine.name === infraDispatch
+                (machine) => machine.slug === infraDispatch
             );
 
             if (!targetMachine) return initialInfraState;

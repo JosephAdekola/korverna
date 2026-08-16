@@ -24,13 +24,23 @@ export default function ComingSoonLayout({
     const {
         infraState,
         infraDispatch
-    } = useInfrastructureContext()
+    } = useInfrastructureContext()    
 
     return (
         <main className="relative min-h-screen overflow-hidden ">
             <Suspense>
                 <SearchParamsForLayout></SearchParamsForLayout>
             </Suspense>
+            <Button
+                variant="ghost"
+                className="p-0 fixed right-5 bottom-30 z-90"
+                onClick={()=>window.open("https://wa.link/xpf1mg")}>
+                <Image
+                    src={"https://ik.imagekit.io/pleddsolca/korverna%20infrastructure/branding/whatsapp_101778.webp"}
+                    alt="Whatsapp_icon"
+                    height={50}
+                    width={50} />
+            </Button>
             <Button
                 className="fixed right-4 top-1/2 -translate-y-1/2 z-99"
                 onClick={() => infraDispatch("NEXT")}>
