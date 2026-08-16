@@ -24,10 +24,7 @@ export default function ComingSoonLayout({
     const {
         infraState,
         infraDispatch
-    } = useInfrastructureContext()   
-    
-    console.log("");
-    
+    } = useInfrastructureContext() 
 
     return (
         <main className="relative min-h-screen overflow-hidden ">
