@@ -1,6 +1,6 @@
-import { QuoteProps, quoteSchema } from "@/lib/zod/schemas/quote"
-import { ErrorMessageLogger } from "@/src/utils/error_message_logger";
+import { QuoteProps, quoteSchema } from "@/lib/zod/schemas/quote";
 import { api } from "@/utils/api/api-fetch";
+import { ErrorMessageLogger } from "@/utils/helpers/error_message_logger";
 import { Dispatch, ReactNode, SetStateAction } from "react"
 
 type HandleSubmitQuoteProps = {

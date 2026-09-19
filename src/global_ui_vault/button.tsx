@@ -1,7 +1,7 @@
 "use client";
 
+import { cn } from "@/utils/helpers/tailwind_merge";
 import React from "react";
-import { cn } from "../utils/tailwind_merge";
 
 type ButtonVariant =
   | "primary"

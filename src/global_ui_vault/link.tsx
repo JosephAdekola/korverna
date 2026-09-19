@@ -2,7 +2,7 @@
 
 import React from "react";
 import NextLink, { LinkProps } from "next/link";
-import { cn } from "../utils/tailwind_merge";
+import { cn } from "@/utils/helpers/tailwind_merge";
 
 type LinkVariant =
   | "primary"

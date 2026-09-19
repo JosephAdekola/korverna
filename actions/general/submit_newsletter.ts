@@ -4,7 +4,7 @@ import { Newsletter } from "@/generated/prisma/client"
 import { prisma } from "@/lib/prisma/prisma"
 import { sendNewsletterAdminNotification } from "@/lib/resend/senders/new_newsletter_sub"
 import { NewsLetterProps, NewsLetterSchema } from "@/lib/zod/schemas/newsLetter"
-import { ErrorMessageLogger } from "@/src/utils/error_message_logger"
+import { ErrorMessageLogger } from "@/utils/helpers/error_message_logger"
 
 export const handleSubmitNewsletter = async (
     payload: NewsLetterProps,

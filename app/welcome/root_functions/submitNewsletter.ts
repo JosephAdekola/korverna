@@ -1,7 +1,7 @@
 import { handleSubmitNewsletter } from "@/actions/general/submit_newsletter";
 import { Newsletter } from "@/generated/prisma/client";
 import { NewsLetterProps, NewsLetterSchema } from "@/lib/zod/schemas/newsLetter";
-import { ErrorMessageLogger } from "@/src/utils/error_message_logger";
+import { ErrorMessageLogger } from "@/utils/helpers/error_message_logger";
 import { Dispatch, SetStateAction } from "react";
 
 export const submitNewsletter = async (

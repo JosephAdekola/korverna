@@ -1,4 +1,4 @@
-import { cn } from "@/src/utils/tailwind_merge";
+import { cn } from "@/utils/helpers/tailwind_merge";
 import React, { forwardRef, useState } from "react";
 
 export interface ShortTextProps

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Check, ChevronDown } from "lucide-react";
-import { cn } from "@/src/utils/tailwind_merge";
+import { cn } from "@/utils/helpers/tailwind_merge";
 
 export interface SelectOption<T = string> {
     label: string;

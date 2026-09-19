@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/src/utils/tailwind_merge";
+import { cn } from "@/utils/helpers/tailwind_merge";
 import React, { forwardRef } from "react";
 
 export interface TextareaProps

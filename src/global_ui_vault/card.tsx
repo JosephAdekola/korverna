@@ -1,10 +1,10 @@
+import { cn } from "@/utils/helpers/tailwind_merge";
 import React, {
   forwardRef,
   type ElementType,
   type HTMLAttributes,
   type ReactNode,
 } from "react";
-import { cn } from "../utils/tailwind_merge";
 
 type CardVariant = "default" | "elevated" | "outline" | "ghost";
 type CardPadding = "none" | "sm" | "md" | "lg";
