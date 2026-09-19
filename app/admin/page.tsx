@@ -4,39 +4,23 @@ import Button from '@/src/global_ui_vault/button'
 import Link from '@/src/global_ui_vault/link'
 import ShortText from '@/src/global_ui_vault/text_inputs/shortTexts'
 import Image from 'next/image'
-import React, { useEffect, useState, useTransition } from 'react'
-import { useSearchParams } from 'next/navigation'
+import React, { Suspense, useEffect, useState, useTransition } from 'react'
 import { handleAdminLogin } from './functions/handleLogin'
 import { FormErrorMessage } from '@/src/global_ui_vault/form-message/error'
 import { FormSucessMessage } from '@/src/global_ui_vault/form-message/success'
 import { useAdminContext } from '@/src/contexts/adminContextProvider'
+import AdminSearchParam from './components/AdminSearchParam'
 
 export default function page() {
 
-    const searchParams = useSearchParams()
+    const { adminSession, isLoadingSession } = useAdminContext()
 
-    const {adminSession, isLoadingSession} = useAdminContext()
-
-    console.log({adminSession, isLoadingSession});
-    
 
     const [email, setEmail] = useState<string>("")
     const [errorMessage, setErrorMessage] = useState("")
     const [successMessage, setSuccessMessage] = useState("")
 
     const [isAuthenticating, startAuthenticating] = useTransition()
-
-    useEffect(() => {
-        const error = searchParams.get("error")
-
-        if (error) {
-            const formattedError = error
-                .toLowerCase()
-                .replace(/_/g, " ")
-
-            setErrorMessage(formattedError)
-        }
-    }, [searchParams])
 
     return (
         <div
@@ -46,7 +30,11 @@ export default function page() {
                 backgroundImage:
                     "url('https://ik.imagekit.io/pleddsolca/korverna%20limited/ChatGPT%20Image%20Jul%2031,%202026,%2007_33_04%20AM%20-%20Edited%20(1).png?updatedAt=1785480223193')"
             }}>
-            
+
+            <Suspense fallback={null}>
+                <AdminSearchParam setErrorMessage={setErrorMessage} />
+            </Suspense>
+
             <div className='container absolute top-5 left-5 right-5 flex justify-between gap-5'>
                 <Link
                     href="/admin"
