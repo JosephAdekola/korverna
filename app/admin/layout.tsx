@@ -1,33 +1,9 @@
-// "use client"
-// import { useAdminContext } from '@/src/contexts/adminContextProvider'
-// import React, { ReactNode } from 'react'
-
-// export default function adminLayout({
-//   children
-// }: {
-//   children: ReactNode
-// }) {
-
-//   const {
-//     adminSession,
-//     setAdminSession,
-//     isLoadingSession,
-//     setIsLoadingSession
-//   } = useAdminContext()
-
-//   return (
-//     <div className='bg-background'>
-//       {children}
-//     </div>
-//   )
-// }
-
-
 "use client"
 
 import { authClient } from '@/lib/better-auth/auth-client'
 import { useAdminContext } from '@/src/contexts/adminContextProvider'
 import React, { ReactNode, useEffect } from 'react'
+import AdminLoading from './components/adminLoading'
 
 export default function adminLayout({
   children
@@ -40,25 +16,27 @@ export default function adminLayout({
     setIsLoadingSession
   } = useAdminContext()
 
-  const {
-    data: session,
-    isPending
-  } = authClient.useSession()
+  // const {
+  //   data: session,
+  //   isPending
+  // } = authClient.useSession()
 
-  useEffect(() => {
-    setIsLoadingSession(isPending)
+  // useEffect(() => {
+  //   setIsLoadingSession(isPending)
 
-    if (session) {
-      setAdminSession(session)
-    } else {
-      setAdminSession(null)
-    }
-  }, [
-    session,
-    isPending,
-    setAdminSession,
-    setIsLoadingSession
-  ])
+  //   if (isPending) return
+
+  //   setAdminSession(session ?? null)
+  // }, [
+  //   session,
+  //   isPending,
+  //   setAdminSession,
+  //   setIsLoadingSession
+  // ])
+
+  // if (isPending) {
+  //   return <AdminLoading />
+  // }
 
   return (
     <div className='bg-background'>

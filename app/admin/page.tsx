@@ -10,8 +10,11 @@ import { FormErrorMessage } from '@/src/global_ui_vault/form-message/error'
 import { FormSucessMessage } from '@/src/global_ui_vault/form-message/success'
 import { useAdminContext } from '@/src/contexts/adminContextProvider'
 import AdminSearchParam from './components/AdminSearchParam'
+import { useRouter } from 'next/navigation'
 
 export default function page() {
+
+    const router = useRouter()
 
     const { adminSession, isLoadingSession } = useAdminContext()
 
@@ -21,6 +24,14 @@ export default function page() {
     const [successMessage, setSuccessMessage] = useState("")
 
     const [isAuthenticating, startAuthenticating] = useTransition()
+
+    // useEffect(() => {
+    //     if (isLoadingSession) return
+
+    //     if (adminSession) {
+    //         router.replace("/admin/dashboard")
+    //     }
+    // }, [adminSession, isLoadingSession, router])
 
     return (
         <div
@@ -49,7 +60,7 @@ export default function page() {
                     />
                 </Link>
 
-                <h3 className='text-background!'>
+                <h3 className='text-background! text-lg! md:text-2xl! lg:text-3xl'>
                     Admin Panel
                 </h3>
             </div>
