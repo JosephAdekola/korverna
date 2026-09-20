@@ -25,13 +25,13 @@ export default function page() {
 
     const [isAuthenticating, startAuthenticating] = useTransition()
 
-    // useEffect(() => {
-    //     if (isLoadingSession) return
+    useEffect(() => {
+        if (isLoadingSession) return
 
-    //     if (adminSession) {
-    //         router.replace("/admin/dashboard")
-    //     }
-    // }, [adminSession, isLoadingSession, router])
+        if (adminSession) {
+            router.replace("/admin/dashboard")
+        }
+    }, [adminSession, isLoadingSession, router])
 
     return (
         <div

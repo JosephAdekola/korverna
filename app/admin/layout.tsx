@@ -16,27 +16,27 @@ export default function adminLayout({
     setIsLoadingSession
   } = useAdminContext()
 
-  // const {
-  //   data: session,
-  //   isPending
-  // } = authClient.useSession()
+  const {
+    data: session,
+    isPending
+  } = authClient.useSession()
 
-  // useEffect(() => {
-  //   setIsLoadingSession(isPending)
+  useEffect(() => {
+    setIsLoadingSession(isPending)
 
-  //   if (isPending) return
+    if (isPending) return
 
-  //   setAdminSession(session ?? null)
-  // }, [
-  //   session,
-  //   isPending,
-  //   setAdminSession,
-  //   setIsLoadingSession
-  // ])
+    setAdminSession(session ?? null)
+  }, [
+    session,
+    isPending,
+    setAdminSession,
+    setIsLoadingSession
+  ])
 
-  // if (isPending) {
-  //   return <AdminLoading />
-  // }
+  if (isPending) {
+    return <AdminLoading />
+  }
 
   return (
     <div className='bg-background'>

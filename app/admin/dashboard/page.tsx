@@ -14,13 +14,13 @@ export default function page() {
 
   const [currentPage, setCurrentPage] = useState<string>("")
 
-  // useEffect(() => {
-  //   if (isLoadingSession) return
+  useEffect(() => {
+    if (isLoadingSession) return
 
-  //   if (!adminSession) {
-  //     router.replace("/admin")
-  //   }
-  // }, [adminSession, isLoadingSession, router])
+    if (!adminSession) {
+      router.replace("/admin")
+    }
+  }, [adminSession, isLoadingSession, router])
 
   return (
     <div
