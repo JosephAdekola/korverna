@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation'
 import React, { Suspense, useEffect, useState } from 'react'
 import Sidebar from './components/sideBar'
 import AdminDashSearchParams from './components/adminDashSearchParams'
+import Emailing from './components/emailing'
+import AdminDashIndexPage from './components/adminDashIndex'
 
 export default function page() {
 
@@ -35,7 +37,11 @@ export default function page() {
       </div>
       <div
         className='border p-3 w-full'>
-        main
+          {
+            currentPage === "emailing" ?
+            <Emailing /> :
+            <AdminDashIndexPage />
+          }
       </div>
     </div>
   )

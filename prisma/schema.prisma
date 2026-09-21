@@ -150,3 +150,34 @@ model InfraPageTraffic {
   @@index([createdAt])
   @@index([landingPage, utmSource])
 }
+
+model AdminEmailSentLog {
+  id          String   @id @default(cuid())
+  sender      String
+  recipients  String[]
+  subject     String
+  body        String
+  resendId    String?
+  createdAt   DateTime @default(now())
+
+  attachments File[]
+
+  @@index([sender])
+  @@index([createdAt])
+}
+
+model File {
+  id          String            @id @default(cuid())
+  url         String
+  fileId      String            @unique
+  fileType    String
+  fileName    String
+  size        Int?
+  createdAt   DateTime          @default(now())
+
+  emailLogId  String?
+  emailLog    AdminEmailSentLog? @relation(fields: [emailLogId], references: [id])
+
+  @@index([createdAt])
+  @@index([emailLogId])
+}

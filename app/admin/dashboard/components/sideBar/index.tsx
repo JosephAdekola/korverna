@@ -42,15 +42,17 @@ export default function Sidebar({
       <ul>
         {
           menu.map((men, idx) => {
+
             const isActive = currentPage == men.slug
 
             return (
               <li
                 key={idx}
                 className={`flex items-center justify-center md:justify-start gap-2
+                  cursor-pointer
                   ${isActive && "border bg-primary-hover/30"}
                   px-1`}
-                onClick={()=> men.action()}
+                onClick={() => men.action()}
               >
                 {men.Icon}
                 <p

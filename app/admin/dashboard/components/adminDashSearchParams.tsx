@@ -17,7 +17,7 @@ export default function AdminDashSearchParams({
         }
 
         setCurrentPage(currentPage)
-    }, [])
+    }, [currentPage])
 
   return null
 }
