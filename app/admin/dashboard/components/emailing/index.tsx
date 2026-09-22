@@ -2,7 +2,7 @@ import TabSwitch from '@/src/global_ui_vault/tabSwitch'
 import React, { useState } from 'react'
 import { tabData } from './data/tabData'
 import SendEmail from './components/sendEmail'
-import EmailSentHistory from './components/emailSentHistory'
+import EmailSentHistory from './components/emailSentHistory/emailSentHistory'
 
 export default function Emailing() {
 

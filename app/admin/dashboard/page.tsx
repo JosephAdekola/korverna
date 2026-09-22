@@ -31,12 +31,12 @@ export default function page() {
           <AdminDashSearchParams setCurrentPage={setCurrentPage} />
         </Suspense>
       <div
-        className='border p-3'>
+        className='border py-3 px-1 md:px-3'>
         <Sidebar
           currentPage={currentPage} />
       </div>
       <div
-        className='border p-3 w-full'>
+        className='border py-3 px-1 md:px-3 w-full '>
           {
             currentPage === "emailing" ?
             <Emailing /> :
