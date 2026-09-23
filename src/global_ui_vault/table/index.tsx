@@ -11,9 +11,9 @@ export default function DataTable<T>({
     data,
     columns,
     containerClassname = "rounded-2xl border bg-white",
-    tableHeadClassname = "border-b bg-muted/30",
-    thClassname = "h-12 px-4 text-left text-xs uppercase font-semibold text-muted-foreground whitespace-nowrap",
-    trClassname = " border-b transition-colors hover:bg-muted/40",
+    tableHeadClassname = "border-b bg-foreground-muted/30",
+    thClassname = "h-12 px-4 text-left text-xs uppercase font-semibold text-foreground-muted whitespace-nowrap",
+    trClassname = " border-b transition-colors hover:bg-foreground-muted/40",
     tdClassname = "px-4 py-4 text-sm",
     rowKey,
     loading = false,
@@ -51,7 +51,7 @@ export default function DataTable<T>({
                     <div className="relative max-w-sm">
                         <Search
                             size={16}
-                            className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
+                            className="absolute left-3 top-1/2 -translate-y-1/2 text-foreground-muted"
                         />
 
                         <input
@@ -102,7 +102,7 @@ export default function DataTable<T>({
             </table>
 
             {!loading && filteredData.length === 0 && (
-                <div className="p-20 text-center text-muted-foreground">
+                <div className="p-20 text-center text-foreground-muted">
                     {emptyMessage}
                 </div>
             )}
@@ -115,7 +115,7 @@ export default function DataTable<T>({
 
             {pagination && totalPages > 1 && (
                 <div className="flex items-center justify-between border-t p-4">
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-foreground-muted">
                         Showing {paginatedData.length} of{" "}
                         {filteredData.length}
                     </p>

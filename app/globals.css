@@ -250,7 +250,8 @@ input, textarea, select{
 
 /* SCROLLBAR */
 ::-webkit-scrollbar{
-  width:10px;
+  width:5px;
+  height: 3px;
 }
 
 ::-webkit-scrollbar-thumb{

@@ -6,15 +6,15 @@ import EmailSentHistory from './components/emailSentHistory/emailSentHistory'
 
 export default function Emailing() {
 
-    const [currentTab, setCurrentTab] = useState("send")
+    const [currentTab, setCurrentTab] = useState("sent-history")
 
     return (
         <div
-        className='flex flex-col gap-5'>
+            className='flex flex-col gap-5 max-w-full'>
             <TabSwitch
                 tabs={tabData}
                 setState={setCurrentTab} />
-            <div>
+            <div className=''>
                 {
                     currentTab === "send" ?
                         <SendEmail /> :

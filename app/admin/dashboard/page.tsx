@@ -26,17 +26,17 @@ export default function page() {
 
   return (
     <div
-      className='flex container h-screen overflow-y-scroll bg-background'>
+      className='grid grid-cols-[auto_1fr] container h-screen overflow-hidden bg-background'>
         <Suspense fallback={null}>
           <AdminDashSearchParams setCurrentPage={setCurrentPage} />
         </Suspense>
       <div
-        className='border py-3 px-1 md:px-3'>
+        className='py-3 px-1 md:px-3'>
         <Sidebar
           currentPage={currentPage} />
       </div>
       <div
-        className='border py-3 px-1 md:px-3 w-full '>
+        className='py-3 px-1 md:px-3 overflow-hidden '>
           {
             currentPage === "emailing" ?
             <Emailing /> :

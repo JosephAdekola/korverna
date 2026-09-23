@@ -11,7 +11,7 @@ type ButtonVariant =
   | "success"
   | "danger";
 
-type ButtonSize = "sm" | "md" | "lg" | "icon";
+type ButtonSize = "sm" | "md" | "lg" | "icon" | "custom";
 
 interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -99,6 +99,8 @@ export default function Button({
     lg: "h-12 px-6 text-base",
 
     icon: "h-11 w-11 p-0",
+
+    custom: ""
   };
 
   return (
