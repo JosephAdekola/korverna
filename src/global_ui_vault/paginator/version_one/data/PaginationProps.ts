@@ -45,3 +45,12 @@ export interface PaginationProps {
      */
     disabled?: boolean;
 }
+
+// export type serverPaginationProps = {
+//     currentPage:
+//     totalPage
+//     totalItems
+// }
+
+export type ServerPaginationProps = 
+    Pick<PaginationProps, "currentPage" | "totalPages"> & {totalItems: number}

@@ -84,13 +84,16 @@ export const sentHistoryCols: TableColumnProps<SentHistoryRowsProps>[] = [
                 <div>
                     {
                         row.attachments && row.attachments?.length < 1 ?
-                            <p>No attachments</p> :
+                            <p
+                                className="text-xs!">
+                                None
+                            </p> :
                             row.attachments!.map((attach, idx) => (
                                 <a
                                     key={idx}
                                     href={attach.url}
                                     className="capitalize underline!">
-                                    {attach.name}
+                                    {attach.fileName.length > 10 ? `${attach.fileName.slice(0, 10)}...` : attach.fileName}
                                 </a>
                             ))
                     }

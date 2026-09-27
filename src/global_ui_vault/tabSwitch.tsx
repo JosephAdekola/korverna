@@ -15,6 +15,7 @@ interface TabsProps<T> {
 
 interface TabSwitchProps<U> {
     tabs?: TabsProps<U>[]
+    defaultTab?: U;
     setState?: Dispatch<SetStateAction<U>>
 
     // Colors
@@ -45,6 +46,7 @@ const defaultTabs: TabsProps<string>[] = [
 
 export default function TabSwitch<W = string>({
     tabs = defaultTabs as TabsProps<W>[],
+    defaultTab,
     setState,
 
     containerColor = "bg-gray-dark/10",
@@ -58,9 +60,7 @@ export default function TabSwitch<W = string>({
     className = ""
 }: TabSwitchProps<W>) {
 
-    const [currentTab, setCurrentTab] = useState<W>(
-        tabs[0]?.value as W
-    )
+    const [currentTab, setCurrentTab] = useState<W>(defaultTab as W)
 
     const handleTabChange = (value: W) => {
         setCurrentTab(value)
