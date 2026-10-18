@@ -36,7 +36,7 @@ export default function ComingSoonLayout({
                 className="p-0 fixed right-5 bottom-30 z-90"
                 onClick={()=>window.open("https://wa.link/7263bq")}>
                 <Image
-                    src={"https://ik.imagekit.io/pleddsolca/korverna%20infrastructure/branding/whatsapp_101778.webp"}
+                    src={"https://ik.imagekit.io/pleddsolca/korverna_infrastructure/branding/whatsapp_101778.webp?updatedAt=1789989008209"}
                     alt="Whatsapp_icon"
                     height={50}
                     width={50} />

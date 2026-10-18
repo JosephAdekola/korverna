@@ -37,7 +37,7 @@ export default function InfraNavBar({
                     className="relative h-[30px] w-[200px]"
                 >
                     <Image
-                        src= "https://ik.imagekit.io/pleddsolca/korverna%20infrastructure/branding/logo_gold_white_text.png"
+                        src= "https://ik.imagekit.io/pleddsolca/korverna_infrastructure/branding/logo%20and%20name%20v2.png?updatedAt=1789989008213"
                          alt="korverna_logo"
                         width={200}
                         height={50}
