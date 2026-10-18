@@ -1,6 +1,16 @@
 [
   {
     "id": 1,
+    "name": "dump trucks",
+    "slug": "dump-truck",
+    "description": "We have dump trucks readily available for hire, with a wide range of additional heavy machinery available to meet your project needs. Get in touch today and request a quote.",
+    "image_url": "https://ik.imagekit.io/pleddsolca/korverna_infrastructure/machines/-hohan-6x4-tipper-truck--5-.jpg",
+    "category": "Earthmoving Equipment",
+    "status": "available",
+    "available_for_hire": true
+  },
+  {
+    "id": 2,
     "name": "payloader",
     "slug": "payloader",
     "description": "We have payloaders readily available for hire, with a wide range of additional heavy machinery available to meet your project needs. Get in touch today and request a quote.",
@@ -10,41 +20,41 @@
     "available_for_hire": true
   },
   {
-    "id": 2,
+    "id": 3,
     "name": "excavator",
     "slug": "excavator",
     "description": "Our excavators are available for hire for excavation, trenching, earthmoving, site preparation, demolition, and other heavy-duty construction projects.",
-    "image_url": "https://ik.imagekit.io/pleddsolca/korverna%20infrastructure/machines/excavator.jpeg",
+    "image_url": "https://ik.imagekit.io/pleddsolca/korverna_infrastructure/machines/excavator.webp",
     "category": "Earthmoving Equipment",
-    "status": "available",
-    "available_for_hire": true
-  },
-  {
-    "id": 3,
-    "name": "grader",
-    "slug": "grader",
-    "description": "Our motor graders are available for hire for road construction, grading, leveling, surface preparation, drainage works, and general site development.",
-    "image_url": "https://ik.imagekit.io/pleddsolca/korverna%20infrastructure/machines/grader.jpeg",
-    "category": "Road Construction Equipment",
     "status": "available",
     "available_for_hire": true
   },
   {
     "id": 4,
-    "name": "backhoe loader",
-    "slug": "backhoe_loader",
-    "description": "Our backhoe loaders are available for hire for excavation, trenching, loading, material handling, site preparation, and general construction work.",
-    "image_url": "https://ik.imagekit.io/pleddsolca/korverna%20infrastructure/machines/Backhoe.jpg?updatedAt=1786318558806",
-    "category": "Earthmoving Equipment",
+    "name": "grader",
+    "slug": "grader",
+    "description": "Our motor graders are available for hire for road construction, grading, leveling, surface preparation, drainage works, and general site development.",
+    "image_url": "https://ik.imagekit.io/pleddsolca/korverna_infrastructure/machines/grader.webp",
+    "category": "Road Construction Equipment",
     "status": "available",
     "available_for_hire": true
   },
   {
     "id": 5,
+    "name": "backhoe loader",
+    "slug": "backhoe_loader",
+    "description": "Our backhoe loaders are available for hire for excavation, trenching, loading, material handling, site preparation, and general construction work.",
+    "image_url": "https://ik.imagekit.io/pleddsolca/korverna_infrastructure/machines/backhoe.avif?updatedAt=1792340134642",
+    "category": "Earthmoving Equipment",
+    "status": "available",
+    "available_for_hire": true
+  },
+  {
+    "id": 6,
     "name": "bulldozer",
     "slug": "bulldozer",
     "description": "Our bulldozers are available for hire for land clearing, earthmoving, site preparation, road construction, grading, pushing, and heavy-duty ground works.",
-    "image_url": "https://ik.imagekit.io/pleddsolca/korverna%20infrastructure/machines/buldozer.jpeg",
+    "image_url": "https://ik.imagekit.io/pleddsolca/korverna_infrastructure/machines/Bulldozer%20Pushing%20Earth%20Under%20Cloudy%20Skies.png",
     "category": "Earthmoving Equipment",
     "status": "available",
     "available_for_hire": true
